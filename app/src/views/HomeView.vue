@@ -4,11 +4,22 @@ import { ref, onMounted } from 'vue'
 const graduation = ref([])
 
 async function GetGrad() {
-  let res = await fetch('https://data.cityofnewyork.us/resource/ynqa-y42e.json')
-  let data = await res.json()
-  graduation.value = data
-  console.log(data)
+  try {
+    let res = await fetch('https://data.cityofnewyork.us/resource/ynqa-y42e.json')
+    let data = await res.json()
+
+    console.log('Fetched Data:', data)
+
+    if (Array.isArray(data) && data.length > 0) {
+      graduation.value = data
+    } else {
+      console.error('Data is empty or not in expected format')
+    }
+  } catch (error) {
+    console.error('Error fetching data: ', error)
+  }
 }
+
 onMounted(() => {
   GetGrad()
 })
