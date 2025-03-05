@@ -31,7 +31,8 @@ onMounted(() => {
       <h1>Graduation Data</h1>
       <ul>
         <li v-for="(item, index) in graduation" :key="index">
-          {{ item.school_name }} - {{ item.graduation_rate }}
+          {{ item.borough }} <br />
+          {{ item.cohort_year }} <br />
         </li>
       </ul>
     </div>
