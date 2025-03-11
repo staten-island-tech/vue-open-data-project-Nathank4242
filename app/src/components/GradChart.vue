@@ -1,36 +1,40 @@
 <template>
-  <script src="https://data.cityofnewyork.us/resource/ynqa-y42e.json"></script>
-  <body>
-    <canvas id="myChart" style="width: 100%; max-width: 600px"></canvas>
-
-    <script>
-      var xValues = [item.borough]
-      var yValues = [item.total_cohort]
-      var barColors = ['red', 'green', 'blue', 'orange', 'brown']
-
-      new Chart('myChart', {
-        type: 'bar',
-        data: {
-          labels: xValues,
-          datasets: [
-            {
-              backgroundColor: barColors,
-              data: yValues,
-            },
-          ],
-        },
-        options: {
-          legend: { display: false },
-          title: {
-            display: true,
-            text: 'World Wine Production 2018',
-          },
-        },
-      })
-    </script>
-  </body>
+  <Bar id="my-chart-id" :options="chartOptions" :data="chartData" />
 </template>
 
-<script setup></script>
+<script>
+import { Bar } from 'vue-chartjs'
+import {
+  Chart as ChartJS,
+  Title,
+  Tooltip,
+  Legend,
+  BarElement,
+  CategoryScale,
+  LinearScale,
+} from 'chart.js'
+
+ChartJS.register(Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale)
+
+export default {
+  name: 'BarChart',
+  components: { Bar },
+  data() {
+    return {
+      chartData: {
+        labels: ['January', 'February', 'March'],
+        datasets: [{ data: [40, 20, 12] }],
+      },
+      chartOptions: {
+        responsive: true,
+      },
+    }
+  },
+}
+</script>
+
+<script setup>
+import { Bar } from 'vue-chartjs'
+</script>
 
 <style lang="scss" scoped></style>
