@@ -13,22 +13,43 @@ import {
   CategoryScale,
   LinearScale,
 } from 'chart.js'
+import axios from 'axios'
 
 ChartJS.register(Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale)
 
 export default {
-  name: 'BarChart',
+  name: 'GradChart',
   components: { Bar },
   data() {
     return {
       chartData: {
-        labels: ['January', 'February', 'March'],
-        datasets: [{ data: [40, 20, 12] }],
+        labels: [],
+        datasets: [{ data: [] }],
       },
       chartOptions: {
         responsive: true,
       },
     }
+  },
+  mounted() {
+    this.fetchChartData()
+  },
+  methods: {
+    async fetchChartData() {
+      try {
+        const response = await axios.get('https://data.cityofnewyork.us/resource/ynqa-y42e.json')
+        const apiData = response.data
+        const labels = apiData.map((item) => item.borough)
+        const data = apiData.map((item) => item.dropout)
+
+        this.chartData = {
+          labels: labels,
+          datasets: [{ data: data }],
+        }
+      } catch (error) {
+        console.error('Error fetching data:', error)
+      }
+    },
   },
 }
 </script>
