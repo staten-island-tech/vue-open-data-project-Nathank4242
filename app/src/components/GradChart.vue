@@ -24,10 +24,39 @@ export default {
     return {
       chartData: {
         labels: [],
-        datasets: [{ data: [] }],
+        datasets: [
+          {
+            label: 'Drop Out rates',
+            data: [],
+            backgroundColor: 'rgba(75, 192, 192, 0.2)',
+            borderColor: 'rgba(75, 192, 192, 1)',
+            borderWidth: 1,
+          },
+        ],
       },
       chartOptions: {
         responsive: true,
+        plugins: {
+          title: {
+            display: true,
+            text: 'Drop Out Rates by Borough',
+          },
+        },
+        scales: {
+          x: {
+            title: {
+              display: true,
+              text: 'Boroughs',
+            },
+          },
+          y: {
+            title: {
+              display: true,
+              text: 'Drop Out Numbers',
+            },
+            beginAtZero: true,
+          },
+        },
       },
     }
   },
@@ -44,7 +73,7 @@ export default {
 
         this.chartData = {
           labels: labels,
-          datasets: [{ data: data }],
+          datasets: [{ label: 'Drop Out rates', data: data }],
         }
       } catch (error) {
         console.error('Error fetching data:', error)
@@ -52,10 +81,6 @@ export default {
     },
   },
 }
-</script>
-
-<script setup>
-import { Bar } from 'vue-chartjs'
 </script>
 
 <style lang="scss" scoped></style>

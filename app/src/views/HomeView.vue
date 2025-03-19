@@ -26,6 +26,7 @@ onMounted(() => {
 </script>
 
 <template>
+  <RouterLink to="/about">Menu</RouterLink>
   <main>
     <div v-if="graduation.length > 0">
       <h1>Graduation Data</h1>
