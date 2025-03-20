@@ -1,12 +1,12 @@
 <template>
   <GradChart />
   <nav>
-    <RouterLink to="/">Home</RouterLink>
+    <RouterLink to="/about">Menu</RouterLink>
   </nav>
 </template>
 
 <script>
-import GradChart from '@/components/GradChart.vue'
+import GradChart from '@/components/GradChart01.vue'
 
 export default {
   name: 'App',

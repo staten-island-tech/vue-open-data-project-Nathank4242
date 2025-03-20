@@ -39,7 +39,7 @@ export default {
         plugins: {
           title: {
             display: true,
-            text: 'Drop Out Rates by Borough',
+            text: 'Drop Outs by Borough',
           },
         },
         scales: {
@@ -68,12 +68,12 @@ export default {
       try {
         const response = await axios.get('https://data.cityofnewyork.us/resource/ynqa-y42e.json')
         const apiData = response.data
-        const labels = apiData.map((item) => item.borough)
-        const data = apiData.map((item) => item.dropout)
-
+        const filteredData = apiData.filter((item) => item.cohort_year === '2001')
+        const labels = filteredData.map((item) => item.borough)
+        const data = filteredData.map((item) => item.dropout)
         this.chartData = {
           labels: labels,
-          datasets: [{ label: 'Drop Out rates', data: data }],
+          datasets: [{ label: 'Drop Out rates (2001)', data: data }],
         }
       } catch (error) {
         console.error('Error fetching data:', error)
