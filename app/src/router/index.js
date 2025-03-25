@@ -33,6 +33,22 @@ const router = createRouter({
       // which is lazy-loaded when the route is visited.
       component: () => import('../views/Look2.vue'),
     },
+    {
+      path: '/drop3',
+      name: 'drop3',
+      // route level code-splitting
+      // this generates a separate chunk (About.[hash].js) for this route
+      // which is lazy-loaded when the route is visited.
+      component: () => import('../views/Look3.vue'),
+    },
+    {
+      path: '/drop4',
+      name: 'drop4',
+      // route level code-splitting
+      // this generates a separate chunk (About.[hash].js) for this route
+      // which is lazy-loaded when the route is visited.
+      component: () => import('../views/Look4.vue'),
+    },
   ],
 })
 

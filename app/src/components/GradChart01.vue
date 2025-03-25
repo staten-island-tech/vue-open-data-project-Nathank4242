@@ -13,7 +13,6 @@ import {
   CategoryScale,
   LinearScale,
 } from 'chart.js'
-import axios from 'axios'
 
 ChartJS.register(Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale)
 
@@ -66,8 +65,11 @@ export default {
   methods: {
     async fetchChartData() {
       try {
-        const response = await axios.get('https://data.cityofnewyork.us/resource/ynqa-y42e.json')
-        const apiData = response.data
+        const response = await fetch('https://data.cityofnewyork.us/resource/ynqa-y42e.json')
+        if (!response.ok) {
+          throw new Error('Network response was not ok')
+        }
+        const apiData = await response.json()
         const filteredData = apiData.filter((item) => item.cohort_year === '2001')
         const labels = filteredData.map((item) => item.borough)
         const data = filteredData.map((item) => item.dropout)

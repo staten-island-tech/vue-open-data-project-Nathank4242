@@ -72,13 +72,13 @@ export default {
         }
         const apiData = await response.json()
 
-        const filteredData = apiData.filter((item) => item.cohort_year === '2002')
+        const filteredData = apiData.filter((item) => item.cohort_year === '2003')
         const labels = filteredData.map((item) => item.borough)
         const data = filteredData.map((item) => item.dropout)
 
         this.chartData = {
           labels: labels,
-          datasets: [{ label: 'Drop Out rates (2002)', data: data }],
+          datasets: [{ label: 'Drop Out rates (2003)', data: data }],
         }
       } catch (error) {
         console.error('Error fetching data:', error)
