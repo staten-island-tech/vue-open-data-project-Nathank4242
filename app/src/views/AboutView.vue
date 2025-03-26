@@ -6,6 +6,7 @@
     <RouterLink to="/Drop2">2002</RouterLink>
     <RouterLink to="/Drop3">2003</RouterLink>
     <RouterLink to="/Drop3">2004</RouterLink>
+    <h2>Total Cohort by years</h2>
   </nav>
 </template>
 
