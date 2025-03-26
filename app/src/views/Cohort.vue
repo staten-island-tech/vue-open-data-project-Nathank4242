@@ -1,18 +1,21 @@
 <template>
   <div>
-    <CircleChart />
+    <nav>
+      <RouterLink to="/about">Menu</RouterLink>
+    </nav>
+    <ScatterPlot />
   </div>
 </template>
 
 <script>
-import CircleChart from '@/components/CohortCard.vue'
+import ScatterPlot from '@/components/ScatterPlot.vue'
 
 export default {
   name: 'App',
   components: {
-    CircleChart,
+    ScatterPlot,
   },
 }
 </script>
 
-<style></style>
+<style scoped></style>
